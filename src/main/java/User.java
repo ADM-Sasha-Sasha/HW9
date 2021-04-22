@@ -17,10 +17,10 @@ public class User
         checkFile(jsonFile);
         List<Piply> users = new LinkedList<>();
         readFile(gsonFile, users);
-        writeFile(jsonFile, users);
+        writeToJson(jsonFile, users);
     }
 
-    private static void writeFile(File jsonFile, List<Piply> users)
+    private static void writeToJson(File jsonFile, List<Piply> users)
     {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(jsonFile)))
         {
@@ -41,8 +41,8 @@ public class User
             String datafile = bufferedReader.readLine();
             while (datafile != null)
             {
-                String[] columns = datafile.split("");
-                if (!columns[0].equals("age"))
+                String[] columns = datafile.split(" ");
+                if (!columns[0].equals("name") && !columns[1].equals("age"))
                 {
                     users.add(new Piply(columns[0], Integer.parseInt(columns[1])));
                 }
