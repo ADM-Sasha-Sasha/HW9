@@ -14,42 +14,37 @@ public class Slova {
         readFile(file);
     }
 
-    private static void readFile(File file)
-    {
+    private static void readFile(File file) {
         StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file)))
-        {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String slowa = bufferedReader.readLine();
-            while (slowa != null)
-            {
+            while (slowa != null) {
                 stringBuilder.append(slowa.trim());
                 stringBuilder.append(" ");
                 slowa = bufferedReader.readLine();
             }
             String slowaBillder = stringBuilder.toString();
             sortirovka(createArrayFromFile(slowaBillder));
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        private static sortirovka (String[] slowaArray)
+    }
+        private static void sortirovka (String[] slowaArray)
         {
             List<String> listSlow = Arrays.asList(slowaArray);
             Map<String, Integer> count = new HashMap<String, Integer>();
-            for (String slowa : listSlow)
+            for (String repeats : listSlow)
             {
                 count.put(repeats, Collections.frequency(listSlow, repeats));
             }
             count.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                     .forEach(System.out::println);
         }
-        private static void createArrayFromFile (String slowaBillder)
+        private static String[] createArrayFromFile (String slowaBillder)
         {
             String[] slowaArray = slowaBillder.split(" ");
             return slowaArray;
         }
-    }
 
     private static void checkFile(File file)
     {
