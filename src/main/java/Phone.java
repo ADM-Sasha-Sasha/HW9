@@ -28,8 +28,8 @@ public class Phone {
     }
 
     private static boolean checkPhone(String phones) {
-        String correctType = "\\([0-9]{3}\\) [0-9]{3} - [0-9]{4}";
-        String correctTypes = "[0-9]{3} [0-9]{3} - [0-9]{4}";
+        String correctType = "\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}";
+        String correctTypes = "[0-9]{3}-[0-9]{3}-[0-9]{4}";
         return phones.matches(correctType) || phones.matches(correctTypes);
     }
 
